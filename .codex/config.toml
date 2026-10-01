@@ -1,0 +1,5 @@
+# Continuity MCP — project-scoped Codex config (trusted projects only).
+# Prefer ./scripts/install-codex.sh to rewrite args to an absolute path.
+[mcp_servers.continuity]
+command = "node"
+args = ["./dist/mcp.js"]
