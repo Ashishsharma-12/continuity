@@ -56,10 +56,3 @@ a frozen claim. The individual `record_*` tools write straight through and do ne
   chosen or rejected, or it will be argued back into a reversal.
 - **Never silently contradict a frozen claim.** If the user's new direction conflicts with a
   frozen item, surface the conflict and confirm before proceeding.
-
----
-
-## Cursor note
-
-This skill is wired for Cursor via `.cursor/skills/continuity/` and `.cursor/rules/continuity.mdc`.
-The MCP server is registered in `.cursor/mcp.json` (local `node ./dist/mcp.js`) or via `npx -y continuity-mcp` after publish.

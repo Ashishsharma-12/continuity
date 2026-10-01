@@ -1,0 +1,23 @@
+{
+  "name": "continuity",
+  "displayName": "Continuity",
+  "version": "0.1.0",
+  "description": "Durable project state across AI sessions: decisions, constraints, rejected paths — resume and capture like Graft wires its context graph.",
+  "author": {
+    "name": "Ashish Sharma"
+  },
+  "homepage": "https://github.com/Ashishsharma-12/Continuity-plugin",
+  "repository": "https://github.com/Ashishsharma-12/Continuity-plugin",
+  "license": "MIT",
+  "keywords": [
+    "continuity",
+    "mcp",
+    "project-state",
+    "resume",
+    "decisions"
+  ],
+  "category": "MCP",
+  "skills": "./skills/",
+  "rules": "./rules/",
+  "mcpServers": "./mcp.json"
+}

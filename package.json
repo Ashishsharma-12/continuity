@@ -39,6 +39,7 @@
     "build": "npm run typecheck && npm run bundle",
     "cli": "tsx src/cli.ts",
     "mcp": "tsx src/mcp.ts",
+    "install:cursor": "CONTINUITY_INSTALL_SCOPE=both bash scripts/install-cursor.sh .",
     "test": "npm run build && bash test/smoke.sh && bash test/reconcile.sh && bash test/risks.sh && bash test/resolve.sh && bash test/schema.sh && bash test/budget.sh && bash test/review.sh && bash test/churn.sh && bash test/mission.sh && bash test/search.sh && bash test/guard.sh",
     "prepublishOnly": "npm run build"
   },
@@ -57,6 +58,10 @@
     "index.js",
     "dist/",
     "skills/",
+    "rules/",
+    "mcp.json",
+    ".cursor-plugin/",
+    "scripts/install-cursor.sh",
     "NOTICE",
     "README.md",
     "LICENSE"
