@@ -1,0 +1,8 @@
+node_modules/
+*.log
+.DS_Store
+*.tgz
+
+# dist/ is committed on purpose: the MCP server runs from bundled dist/
+# so reference installs need no npm install step.
+agent-tools/

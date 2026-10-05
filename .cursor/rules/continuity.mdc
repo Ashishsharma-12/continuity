@@ -1,0 +1,19 @@
+---
+description: Persist and resume durable project state via Continuity MCP (resume_context / capture).
+globs:
+alwaysApply: true
+---
+
+# Continuity
+
+At the start of work on an ongoing project, call the Continuity MCP tool `resume_context`. Treat 🔒 FROZEN and 🚫 rejected items as authoritative.
+
+Default to capturing nothing. Only record what a future session cannot re-derive:
+- settled decision → `record_decision` (or batch via `capture`)
+- standing instruction / constraint → `record_constraint`
+- rejected alternative → `record_rejection` (reason required)
+- open / risk / milestone / next action → `record_open`
+
+Prefer `capture` for batches (dedupe + frozen-guard). Freeze, why, resolve, and mission replace only on explicit user request.
+
+Full policy: see `skills/continuity/SKILL.md`.

@@ -1,0 +1,16 @@
+Continuity MCP
+==============
+
+This package (`continuity-mcp`) is adapted from:
+
+  ai-continuity-plugin
+  https://github.com/vikcena01/ai-continuity-plugin
+  Copyright (c) 2026 Vikash
+  Licensed under the MIT License
+
+Substantial portions of the TypeScript core, MCP tool surface, CLI, claim
+schema, reconciler, and resume projection are derived from that project.
+The original LICENSE text is preserved in LICENSE.
+
+Cursor-specific packaging (`.cursor/mcp.json`, Cursor skill/rule wiring,
+npm package name `continuity-mcp`) is original to this repository.
