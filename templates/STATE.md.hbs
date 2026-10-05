@@ -1,0 +1,79 @@
+# Handoff {{handoff.id}}
+
+**Created:** {{handoff.createdAt}} · **Harness:** {{handoff.sourceHarness}} · **Model:** {{handoff.sourceModel}} · **Repo:** {{handoff.repo.root}} · **Branch:** {{handoff.branch}} · **Commit:** {{handoff.commit}}
+
+## 1. Original Goal
+
+{{original_goal}}
+
+## 2. Current Plan
+
+{{#each current_plan}}- {{this}}
+{{/each}}
+
+## 3. Todos — Done
+
+{{#each todos.done}}- [x] {{task}} {{#if refs}}({{refs}}){{/if}} {{#if commit}}@{{commit}}{{/if}}
+{{/each}}
+
+## 4. Todos — Pending
+
+{{#each todos.pending}}- [ ] {{task}} {{#if refs}}({{refs}}){{/if}}
+{{/each}}
+
+## 5. Todos — Blocked
+
+{{#each todos.blocked}}- [ ] {{task}} — {{reason}}
+{{/each}}
+
+## 6. Key Decisions
+
+{{#each key_decisions}}- {{decision}} — {{why}} (rejected: {{rejected}})
+{{/each}}
+
+## 7. Assumptions
+
+{{#each assumptions}}- {{this}}
+{{/each}}
+
+## 8. Open Questions
+
+{{#each open_questions}}- {{this}}
+{{/each}}
+
+## 9. Git Snapshot
+
+- **Stat:** {{git_snapshot.stat}}
+- **Changed:** {{git_snapshot.changedFiles}}
+- **Untracked:** {{git_snapshot.untracked}}
+- **Patch:** {{git_snapshot.patchPath}}
+
+<details><summary>Patch preview (200 lines)</summary>
+
+```
+{{git_snapshot.patchTruncated}}
+```
+
+</details>
+
+## 10. Verification
+
+- **Last command:** {{verification.lastCommand}}
+- **Status:** {{verification.status}}
+- **Summary:** {{verification.summary}}
+- **Log:** {{verification.logPath}}
+
+## 11. Next Action
+
+> {{next_action}}
+
+## 12. Context Notes
+
+- **Entry points:** {{context_notes.entryPoints}}
+- **Read order:** {{context_notes.readOrder}}
+
+## Secrets Policy
+
+- **Ignored globs:** {{secrets_policy.ignoredGlobs}}
+- **Redacted:** {{secrets_policy.redacted}}
+

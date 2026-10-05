@@ -1,0 +1,39 @@
+---
+description: Continue work left by another agent — structured handoff for Cursor. AUTO at session start and before context limits.
+alwaysApply: true
+globs: ["**/*"]
+---
+
+# continuity — Cursor adapter
+
+Active in every Cursor session in this workspace. Delegates to the Continuity CLI when present; otherwise use the prompt-only fallback.
+
+## CLI resolution (Windows-safe)
+
+Prefer, in order:
+
+1. `continuity <cmd>` if on PATH
+2. `node skills/continuity/cli/lib/bin.js <cmd>` from the AGOS-1 workspace root
+3. Prompt-only fallback (write `.continuity/<id>/STATE.md` + `state.json`)
+
+## Auto — run without being asked
+
+- **At session start (first agent turn):** check for handoffs via the CLI above (`list --json`) and list `.continuity/` if present. If a recent handoff exists for this repo, Read `.continuity/<id>/STATE.md`, summarize `original_goal` + `next_action`, and ask: "Found handoff \<id\> — resume from next_action?"
+- **Before context/token limit** or when the user says "continue in another agent": run `create "<goal>" --yes` (interview if goal ambiguous). Print the resume one-liner.
+- **After completing a sub-task:** if todos remain, update or create a handoff so the next agent has fresh state.
+
+Do not wait for the user to type `/continuity`.
+
+## Step 0 — Doctor
+
+Run `doctor` via the CLI resolution above.
+CLI present → delegate to `create` / `resume`.
+CLI absent → fallback prompt-only writes to `.continuity/<id>/STATE.md` with the canonical 12 headings from `skills/continuity/templates/STATE.md.hbs`; warn to run `validate --fix` after installing the CLI.
+
+## Commands
+
+- `create "goal"` / `create "goal" --yes`
+- `resume <id|latest>`
+- `list` / `status <id>` / `validate [<id>] [--fix]`
+
+On resume, Read `.continuity/<id>/STATE.md` and follow `next_action`. Full procedure: skill `continuity` (`.claude/skills/continuity/SKILL.md`).

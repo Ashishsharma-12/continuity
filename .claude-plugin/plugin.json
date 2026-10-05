@@ -1,0 +1,17 @@
+{
+  "name": "continuity",
+  "description": "Continue work left by another agent — structured handoff create/resume across 6+ harnesses (Claude Code, Codex, Cursor, OpenCode, Windsurf, Cline). Local-only .continuity/STATE.md + state.json with 12-field schema, read-only resume, graceful fallback.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Ashish Sharma"
+  },
+  "repository": "https://github.com/Ashishsharma-12/continuity",
+  "license": "MIT",
+  "keywords": [
+    "continuity",
+    "handoff",
+    "agent",
+    "harness",
+    "cross-agent"
+  ]
+}

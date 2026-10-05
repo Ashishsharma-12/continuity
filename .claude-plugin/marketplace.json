@@ -1,0 +1,18 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "continuity",
+  "description": "Structured, local-only agent handoffs across Claude Code, Codex, Cursor, OpenCode, Windsurf, and Cline.",
+  "owner": {
+    "name": "Ashish Sharma",
+    "email": ""
+  },
+  "plugins": [
+    {
+      "name": "continuity",
+      "source": "./",
+      "description": "Continue work left by another agent across 6+ harnesses with a structured local handoff (.continuity/STATE.md + state.json, read-only resume).",
+      "category": "productivity",
+      "version": "0.1.0"
+    }
+  ]
+}

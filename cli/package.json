@@ -1,0 +1,37 @@
+{
+  "name": "continuity",
+  "version": "0.1.0",
+  "type": "module",
+  "packageManager": "pnpm@11.7.0",
+  "engines": {
+    "node": "^22.19.0 || >=24.0.0"
+  },
+  "bin": {
+    "continuity": "lib/bin.js"
+  },
+  "files": [
+    "lib/**/*.js",
+    "templates/*",
+    "hooks/*.cjs"
+  ],
+  "dependencies": {
+    "commander": "^15.0.0",
+    "zod": "^3.23.8",
+    "zod-to-json-schema": "^3.23.5",
+    "handlebars": "^4.7.8",
+    "proper-lockfile": "^4.1.2"
+  },
+  "devDependencies": {
+    "typescript": "~5.9.3",
+    "vitest": "^4.1.10",
+    "tsx": "^4.22.4",
+    "tsdown": "^0.22.2",
+    "@types/node": "^24.10.1",
+    "@types/proper-lockfile": "^4.1.4"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "lint": "eslint src/**/*.ts"
+  }
+}

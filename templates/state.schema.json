@@ -1,0 +1,336 @@
+{
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "1.0"
+    },
+    "handoff": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}-\\d{2}__[a-z0-9-]+$"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "sourceHarness": {
+          "type": "string",
+          "enum": [
+            "claude-code",
+            "codex",
+            "cursor",
+            "opencode",
+            "windsurf",
+            "cline",
+            "roo",
+            "auto-save",
+            "unknown"
+          ]
+        },
+        "sourceModel": {
+          "type": "string"
+        },
+        "repo": {
+          "type": "object",
+          "properties": {
+            "root": {
+              "type": "string"
+            },
+            "remote": {
+              "type": "string"
+            },
+            "hash": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "root",
+            "remote",
+            "hash"
+          ],
+          "additionalProperties": false
+        },
+        "branch": {
+          "type": "string"
+        },
+        "commit": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "createdAt",
+        "sourceHarness",
+        "sourceModel",
+        "repo",
+        "branch",
+        "commit"
+      ],
+      "additionalProperties": false
+    },
+    "original_goal": {
+      "type": "string",
+      "minLength": 10
+    },
+    "current_plan": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "todos": {
+      "type": "object",
+      "properties": {
+        "done": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "task": {
+                "type": "string"
+              },
+              "refs": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "commit": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "task"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "pending": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "task": {
+                "type": "string"
+              },
+              "refs": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "blocked": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "task"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "blocked": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "task": {
+                "type": "string"
+              },
+              "reason": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "task",
+              "reason"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "done",
+        "pending",
+        "blocked"
+      ],
+      "additionalProperties": false
+    },
+    "key_decisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "decision": {
+            "type": "string"
+          },
+          "why": {
+            "type": "string"
+          },
+          "rejected": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "decision",
+          "why",
+          "rejected"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "open_questions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "git_snapshot": {
+      "type": "object",
+      "properties": {
+        "stat": {
+          "type": "string"
+        },
+        "changedFiles": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "untracked": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "patchPath": {
+          "type": "string"
+        },
+        "patchTruncated": {
+          "type": "string"
+        },
+        "stashRef": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "not_a_repo": {
+          "type": "boolean"
+        },
+        "cwd": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "stat",
+        "changedFiles",
+        "untracked",
+        "patchPath",
+        "patchTruncated",
+        "stashRef"
+      ],
+      "additionalProperties": false
+    },
+    "verification": {
+      "type": "object",
+      "properties": {
+        "lastCommand": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "pass",
+            "fail",
+            "not_run"
+          ]
+        },
+        "summary": {
+          "type": "string"
+        },
+        "logPath": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "lastCommand",
+        "status",
+        "summary",
+        "logPath"
+      ],
+      "additionalProperties": false
+    },
+    "next_action": {
+      "type": "string",
+      "minLength": 12
+    },
+    "context_notes": {
+      "type": "object",
+      "properties": {
+        "entryPoints": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "readOrder": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "entryPoints",
+        "readOrder"
+      ],
+      "additionalProperties": false
+    },
+    "secrets_policy": {
+      "type": "object",
+      "properties": {
+        "ignoredGlobs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "redacted": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "ignoredGlobs",
+        "redacted"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "handoff",
+    "original_goal",
+    "current_plan",
+    "todos",
+    "key_decisions",
+    "assumptions",
+    "open_questions",
+    "git_snapshot",
+    "verification",
+    "next_action",
+    "context_notes",
+    "secrets_policy"
+  ],
+  "additionalProperties": true,
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}
