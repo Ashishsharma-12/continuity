@@ -6,3 +6,41 @@ node_modules/
 # dist/ is committed on purpose: the MCP server runs from bundled dist/
 # so reference installs need no npm install step.
 agent-tools/
+
+# graft's local graph cache — regenerable, not committed (run `graft build`).
+/graft/
+
+# --- workspace hygiene: agent-tool local state, bytecode, scratch ---
+.claude/
+.gemini/
+.grok/
+.kiro/
+.windsurf/
+.opencode/
+opencode.json
+CLAUDE.local.md
+.codex-pytest-*
+
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+.worktrees/
+.superpowers/
+.agent-churn-control/
+.tmp-*
+.cache/
+.playwright-mcp/
+
+# --- agent workspace rule files: mirrored per-repo, not committed ---
+.agents/
+CLAUDE.md
+
+# --- per-repo agent rule files: mirrored, not committed ---
+.github/copilot-instructions.md
+.ignore
+AGENTS.md
+GEMINI.md
+
+# mirrored workspace rule, not committed here (continuity ships its own .cursor rules)
+.cursor/rules/alembic-migrations.mdc
